@@ -19,12 +19,16 @@ markdown: kramdown
 highlighter: rouge
 permalink: /posts/:title/
 
-# Plugins
+# Plugins (apenas os suportados pelo GitHub Pages)
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
+
+# GitHub Pages
+github:
+  repository: gustavogdavel/BlogPortifolio
 
 # Paginação
 paginate: 10

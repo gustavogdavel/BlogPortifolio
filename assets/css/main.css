@@ -10,9 +10,9 @@
     --border-color: #e9ecef;
 
     /* Cores de destaque */
-    --link-color: #2a408e;
-    --link-hover: #15326a;
-    --accent-color: #3d5afe;
+    --link-color: #4582ec;
+    --link-hover: #2563d4;
+    --accent-color: #4582ec;
 
     /* Sidebar e cards */
     --sidebar-bg: #f8f9fa;
@@ -20,9 +20,10 @@
     --card-shadow: 0 0 0.5rem rgba(0,0,0,0.05);
     --card-hover-shadow: 0 0.5rem 1rem rgba(0,0,0,0.08);
 
-    /* Header */
-    --header-bg: #ffffff;
-    --header-border: #e9ecef;
+    /* Header - Fundo escuro */
+    --header-bg: #34495e;
+    --header-text: #ffffff;
+    --header-border: #2c3e50;
 
     /* Outros */
     --code-bg: #f6f8fa;
@@ -98,11 +99,11 @@ a:hover {
 .site-header {
     background-color: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
-    padding: 1rem 0;
+    padding: 1.2rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .header-content {
@@ -129,18 +130,19 @@ a:hover {
 }
 
 .site-branding a {
-    color: var(--text-color);
+    color: var(--header-text);
 }
 
 .site-branding h1 {
     font-size: 1.5rem;
     font-weight: 700;
     margin: 0;
+    color: var(--header-text);
 }
 
 .site-tagline {
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.8);
     margin: 0;
 }
 
@@ -161,17 +163,18 @@ a:hover {
 }
 
 .nav-menu a {
-    color: var(--text-color);
+    color: var(--header-text);
     font-size: 0.95rem;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.8rem;
     border-bottom: 2px solid transparent;
     text-decoration: none;
+    transition: border-color 0.3s ease;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: var(--link-color);
-    border-bottom-color: var(--accent-color);
+    color: var(--header-text);
+    border-bottom-color: #e74c3c;
     text-decoration: none;
 }
 
@@ -183,14 +186,14 @@ a:hover {
 }
 
 .social-links a {
-    color: var(--text-muted);
+    color: var(--header-text);
     display: flex;
     align-items: center;
-    transition: color 0.2s;
+    transition: opacity 0.2s;
 }
 
 .social-links a:hover {
-    color: var(--link-color);
+    opacity: 0.8;
 }
 
 /* ===================================

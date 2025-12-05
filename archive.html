@@ -1,0 +1,91 @@
+---
+layout: page
+title: Arquivo
+permalink: /archive/
+---
+
+<div class="archive-page">
+    {% if site.posts.size > 0 %}
+        {% assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+        {% for year in postsByYear %}
+        <section class="archive-year">
+            <h2>{{ year.name }}</h2>
+
+            <ul class="archive-list">
+                {% for post in year.items %}
+                <li class="archive-item">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">
+                        {{ post.date | date: "%d/%m" }}
+                    </time>
+                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    {% if post.categories %}
+                    <span class="archive-categories">
+                        {{ post.categories | join: ', ' }}
+                    </span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endfor %}
+    {% else %}
+        <p>Nenhum post publicado ainda.</p>
+    {% endif %}
+</div>
+
+<style>
+.archive-year {
+    margin-bottom: 3rem;
+}
+
+.archive-year h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.archive-list {
+    list-style: none;
+}
+
+.archive-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.archive-item:last-child {
+    border-bottom: none;
+}
+
+.archive-item time {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    min-width: 60px;
+}
+
+.archive-item a {
+    flex: 1;
+    font-weight: 500;
+}
+
+.archive-categories {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .archive-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .archive-item time {
+        min-width: auto;
+    }
+}
+</style>

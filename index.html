@@ -1,0 +1,50 @@
+---
+layout: default
+title: Home
+---
+
+<div class="container">
+    <section class="hero">
+        <h1>Bem-vindo ao meu Blog</h1>
+        <p>{{ site.description }}</p>
+    </section>
+
+    <section class="posts-section">
+        <h2>Posts Recentes</h2>
+
+        {% if site.posts.size > 0 %}
+        <div class="posts-grid">
+            {% for post in site.posts limit:6 %}
+            <article class="post-card">
+                {% if post.image %}
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="post-card-image">
+                {% endif %}
+
+                <div class="post-card-content">
+                    <h3 class="post-card-title">
+                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    </h3>
+
+                    <div class="post-card-meta">
+                        <time datetime="{{ post.date | date_to_xmlschema }}">
+                            {{ post.date | date: "%d/%m/%Y" }}
+                        </time>
+                        {% if post.categories %}
+                        | {{ post.categories | join: ', ' }}
+                        {% endif %}
+                    </div>
+
+                    {% if post.excerpt %}
+                    <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                    {% endif %}
+
+                    <a href="{{ post.url | relative_url }}" class="post-card-link">Ler mais &rarr;</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>Nenhum post publicado ainda. Em breve teremos conteúdo novo!</p>
+        {% endif %}
+    </section>
+</div>
